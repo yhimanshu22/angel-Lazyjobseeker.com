@@ -1,10 +1,10 @@
-# Angel AI Meeting Assistant
+# Angel AI Meeting Assistant (Open Source Version)
 
 Angel is a desktop application that helps you in meetings by providing real-time transcription and AI-generated answers.
 
 ## Features
 
-- **Live Transcription**: See your speech as text in real-time
+- **Transcription**: Get your speech transcribed after each recording (not live)
 - **AI-Powered Answers**: Get concise and helpful responses using OpenAI's advanced models
 - **Always-on-Top**: Angel stays visible over other applications
 - **Screen Sharing Mode**: Hide Angel from screen recordings with a single click
@@ -12,22 +12,32 @@ Angel is a desktop application that helps you in meetings by providing real-time
 
 ## Usage Instructions
 
-### Basic Controls
+### 1. Add Your OpenAI API Key
+
+After starting the app, click the gear icon in the lower left corner. Paste your own OpenAI API key and click Save. **No API key is included by default.**
+
+- You can get an API key from [OpenAI](https://platform.openai.com/account/api-keys).
+
+### 2. Basic Controls
 
 - **Start/Stop Recording**: Click the microphone button or press the spacebar
 - **Reset Conversation**: Click the refresh button to clear the chat history
 - **Hide from Screen Sharing**: Toggle the "Hide" switch to make Angel invisible in screen recordings
 
-### Keyboard Shortcuts
+### 3. Keyboard Shortcuts
 
 - **Spacebar**: Start or stop recording
 
-### Tips for Best Results
+### 4. Tips for Best Results
 
 1. **Speak Clearly**: For the best transcription quality, speak at a normal pace and volume
 2. **Use Short Phrases**: The AI works best with concise, focused questions or statements
 3. **Position Properly**: Keep Angel visible but out of the way during your meetings
 4. **Toggle Screen Sharing**: When sharing your screen, use the Hide toggle to prevent Angel from appearing in your presentation
+
+## ⚡️ Want Live, Fast Transcription?
+
+This open source version may be slower than the Pro version, as it uses your own OpenAI API key and does not support live transcription. For the fastest, live transcription and premium features, consider subscribing to the [Pro version](https://lazyjobseeker.com/pricing).
 
 ## System Requirements
 
@@ -36,16 +46,6 @@ Angel is a desktop application that helps you in meetings by providing real-time
 - **Memory**: At least 4GB RAM recommended
 - **Microphone**: Any working microphone (internal or external)
 - **Internet**: Required for AI functionality and transcription
-
-## Setup
-
-- Set your OpenAI API key as an environment variable:
-
-```bash
-export OPENAI_API_KEY='your-openai-api-key-here'
-```
-
-- No Google Cloud setup is required. All transcription and answers use OpenAI APIs.
 
 ## Privacy & Security
 
@@ -77,4 +77,4 @@ If Angel is running slowly:
 
 ---
 
-For support or questions, visit: [https://lazyjobseeker.com](https://lazyjobseeker.com) 
+For support or questions, visit: <https://lazyjobseeker.com> 
