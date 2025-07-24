@@ -8,20 +8,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "electron-builder",
     "build-mac": "electron-builder --mac",
-    "build-win": "electron-builder --win",
+    "build-win": "electron-builder --win --x64 && electron-builder --win --arm64",
+    "build-win-x64": "electron-builder --win --x64",
+    "build-win-arm64": "electron-builder --win --arm64",
     "build-macarm": "electron-builder --mac --arm64",
+    "build-macintel": "electron-builder --mac --x64",
     "build-all": "sh ./build-all.sh",
     "postinstall": "electron-builder install-app-deps"
   },
   "author": "Lazy Job Seeker",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/speech": "^7.0.1",
-    "@google-cloud/text-to-speech": "^5.0.1",
     "axios": "^1.8.4",
-    "firebase": "^10.14.1",
-    "firebase-admin": "^12.7.0",
-    "node-record-lpcm16": "^0.3.1",
     "openai": "^4.24.1"
   },
   "devDependencies": {
@@ -53,12 +51,12 @@
     },
     "files": [
       "**/*",
-      "!lazy-job-seeker-4b29b-eb0b308d0ba7.json"
+      "!lazy-job-seeker-4b29b-21d42df9f315.json"
     ],
     "extraResources": [
       {
-        "from": "lazy-job-seeker-4b29b-eb0b308d0ba7.json",
-        "to": "lazy-job-seeker-4b29b-eb0b308d0ba7.json"
+        "from": "lazy-job-seeker-4b29b-21d42df9f315.json",
+        "to": "lazy-job-seeker-4b29b-21d42df9f315.json"
       }
     ],
     "asarUnpack": [

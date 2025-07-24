@@ -37,6 +37,16 @@ Angel is a desktop application that helps you in meetings by providing real-time
 - **Microphone**: Any working microphone (internal or external)
 - **Internet**: Required for AI functionality and transcription
 
+## Setup
+
+- Set your OpenAI API key as an environment variable:
+
+```bash
+export OPENAI_API_KEY='your-openai-api-key-here'
+```
+
+- No Google Cloud setup is required. All transcription and answers use OpenAI APIs.
+
 ## Privacy & Security
 
 - All audio is processed in real-time and is not stored

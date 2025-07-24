@@ -24,11 +24,25 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Build for Windows
-echo "Building for Windows..."
-CSC_IDENTITY_AUTO_DISCOVERY=false npm run build-win
+# Build for macOS (Intel)
+echo "Building for macOS (Intel)..."
+CSC_IDENTITY_AUTO_DISCOVERY=false NOTARIZE=false npm run build-macintel
 if [ $? -ne 0 ]; then
-    echo "Error: Windows build failed"
+    echo "Error: macOS (Intel) build failed"
+    exit 1
+fi
+
+# Build for Windows
+echo "Building for Windows (x64)..."
+CSC_IDENTITY_AUTO_DISCOVERY=false npm run build-win-x64
+if [ $? -ne 0 ]; then
+    echo "Error: Windows x64 build failed"
+    exit 1
+fi
+echo "Building for Windows (ARM64)..."
+CSC_IDENTITY_AUTO_DISCOVERY=false npm run build-win-arm64
+if [ $? -ne 0 ]; then
+    echo "Error: Windows ARM64 build failed"
     exit 1
 fi
 
@@ -40,6 +54,8 @@ echo "Build completed successfully!"
 echo "You can find the builds in the dist directory:"
 echo "- macOS Apple Silicon: dist/Angel AI Meeting Assistant-1.0.0-arm64-mac.zip"
 echo "- macOS Apple Silicon: dist/Angel AI Meeting Assistant-1.0.0-arm64.dmg"
+echo "- macOS Intel: dist/Angel AI Meeting Assistant-1.0.0-x64-mac.zip"
+echo "- macOS Intel: dist/Angel AI Meeting Assistant-1.0.0-x64.dmg"
 echo "- Windows: dist/Angel AI Meeting Assistant Setup 1.0.0.exe"
 echo "- Windows: dist/Angel AI Meeting Assistant-1.0.0-win.zip"
 echo ""

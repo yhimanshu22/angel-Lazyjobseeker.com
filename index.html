@@ -42,21 +42,25 @@
             background-color: var(--background);
             color: var(--text);
             min-height: 100vh;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0.25rem;
+            padding: 0;
             line-height: 1.5;
             font-size: 0.875rem;
         }
         
         .container {
-            width: 100%;
-            max-width: 450px;
-            height: 85vh;
+            width: 100vw;
+            max-width: none;
+            height: 100vh;
             position: relative;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
         
         /* Sign In Screen Styles */
@@ -97,42 +101,7 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .upgrade-prompt {
-            background: white;
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            margin: 2rem auto;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .upgrade-prompt h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .upgrade-prompt p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-        
-        .upgrade-btn {
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-        }
-        
-        .upgrade-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
+
 
         /* Welcome Screen Styles */
         .welcome-screen {
@@ -316,7 +285,8 @@
         
         /* Chat messages area */
         .chat-messages {
-            flex: 1;
+            flex: 1 1 auto;
+            min-height: 0;
             overflow-y: auto;
             padding: 0.75rem;
             display: flex;
@@ -372,12 +342,13 @@
             font-style: italic;
             color: var(--text-light);
             box-shadow: var(--shadow-sm);
-            display: none;
             max-height: 80px;
             overflow-y: auto;
             opacity: 0.9;
             font-size: 0.8rem;
-            position: relative;
+            position: sticky;
+            bottom: 3.5rem;
+            z-index: 9;
         }
         
         .live-transcript.active {
@@ -404,6 +375,19 @@
             padding: 0.5rem;
             background-color: white;
             border-top: 1px solid var(--border);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            position: relative;
+        }
+        .gear-corner {
+            position: absolute;
+            left: 0.7rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .control-buttons {
@@ -599,27 +583,50 @@
             align-items: center;
         }
         
+        /* Professional Hide Toggle */
         .toggle-switch.compact {
-            width: 2rem;
+            width: 2.2rem;
             height: 1.2rem;
-            margin-left: 0.25rem;
+            margin-left: 0.5rem;
+            border: none;
+            background: none;
+            position: relative;
         }
-        
+        .toggle-switch.compact .toggle-label {
+            background: #e5e7eb;
+            border-radius: 1.2rem;
+            box-shadow: 0 2px 6px rgba(99,102,241,0.08);
+            border: 1.5px solid #c7d2fe;
+            transition: background 0.3s, border 0.3s;
+            height: 1.2rem;
+            width: 2.2rem;
+        }
+        .toggle-switch.compact .toggle-input:checked + .toggle-label {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border: 1.5px solid var(--primary);
+        }
         .toggle-switch.compact .toggle-label:before {
-            height: 0.9rem;
-            width: 0.9rem;
-            left: 0.2rem;
-            bottom: 0.15rem;
+            height: 1rem;
+            width: 1rem;
+            left: 0.1rem;
+            bottom: 0.1rem;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+            border: 1px solid #c7d2fe;
         }
-        
         .toggle-switch.compact .toggle-input:checked + .toggle-label:before {
-            transform: translateX(0.8rem);
+            transform: translateX(1rem);
+            background: #fff;
+            border: 1px solid var(--primary);
         }
-        
         .toggle-text {
-            font-size: 0.7rem;
-            margin-left: 0.25rem;
-            color: #6b7280;
+            font-size: 1rem;
+            margin-left: 0.7rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-shadow: none;
+            vertical-align: middle;
         }
 
         /* New: Modal Styles */
@@ -694,41 +701,160 @@
         .modal-content .reset-button:hover {
             background-color: #e2e8f0;
         }
+
+        /* Modern Switch for Hide Toggle */
+        .modern-switch {
+            position: relative;
+            width: 2.4rem;
+            height: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modern-switch input[type="checkbox"] {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .modern-switch .slider {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #e5e7eb;
+            border-radius: 1.3rem;
+            transition: background 0.3s;
+            box-shadow: 0 2px 6px rgba(99,102,241,0.08);
+        }
+        .modern-switch input[type="checkbox"]:checked + .slider {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+        .modern-switch .knob {
+            position: absolute;
+            top: 0.13rem;
+            left: 0.13rem;
+            width: 1.04rem;
+            height: 1.04rem;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+            border: 1px solid #c7d2fe;
+            transition: left 0.3s;
+        }
+        .modern-switch input[type="checkbox"]:checked + .slider .knob {
+            left: 1.23rem;
+            border: 1px solid var(--primary);
+        }
+        .hide-label {
+            display: block;
+            text-align: center;
+            font-size: 0.72rem;
+            color: var(--primary);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 500;
+            margin-top: 0.12rem;
+            letter-spacing: 0.01em;
+        }
+        .reset-label {
+            display: block;
+            text-align: center;
+            font-size: 0.72rem;
+            color: #64748b;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 500;
+            margin-top: 0.12rem;
+            letter-spacing: 0.01em;
+        }
+        .gear-icon {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            vertical-align: middle;
+        }
+        .gear-icon:hover {
+            color: var(--primary);
+        }
+        .apikey-modal {
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .apikey-modal-content {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+            min-width: 320px;
+            max-width: 90vw;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .apikey-modal-content h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .apikey-modal-content label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+        .apikey-modal-content input[type="password"] {
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .apikey-modal-content .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        .apikey-modal-content button {
+            padding: 0.4rem 1.1rem;
+            border-radius: var(--radius);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: var(--primary);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .apikey-modal-content button.cancel {
+            background: #e5e7eb;
+            color: #64748b;
+        }
+        .apikey-modal-content button.cancel:hover {
+            background: #cbd5e1;
+        }
+        .apikey-modal-content button.save:hover {
+            background: var(--primary-dark);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Sign In Screen -->
-        <div id="signInScreen" class="sign-in-screen">
-            <div class="title-wrapper">
-                <h2 class="product-name">Angel</h2>
-                <h1 class="subtitle">AI Meeting Assistant</h1>
-                <p class="product-description">
-                    Sign in to access your AI meeting assistant
-                </p>
-            </div>
-            <button class="sign-in-btn" id="signInButton">
-                <i class="fab fa-google"></i>
-                Sign in with Google
-            </button>
-            <div class="product-footer">
-                <span>A product from </span>
-                <a href="https://lazyjobseeker.com" target="_blank">LazyJobSeeker.com</a>
-                <span style="margin: 0 5px;">•</span>
-                <span>Made with </span>
-                <i class="fas fa-heart heart-icon"></i>
-            </div>
-        </div>
-
-        <!-- Upgrade Prompt (initially hidden) -->
-        <div id="upgradePrompt" class="upgrade-prompt hidden">
-            <h3>Upgrade Required</h3>
-            <p>To use Angel AI Meeting Assistant, you need an Ultimate plan subscription.</p>
-            <a href="https://lazyjobseeker.com/pricing" target="_blank" class="upgrade-btn">
-                Upgrade Now
-            </a>
-        </div>
-
+        <!-- Remove Sign In Screen -->
+        
         <!-- Welcome Screen (initially hidden) -->
         <div id="welcomeScreen" class="welcome-screen hidden">
             <div class="title-wrapper">
@@ -745,6 +871,7 @@
             <button id="provideProfileButtonWelcome" class="start-btn" title="Provide your resume for interview mode" style="margin-top: 1rem;">
                 <i class="fas fa-user"></i> Provide Profile
             </button>
+
             <div class="product-footer">
                 <span>A product from </span>
                 <a href="https://lazyjobseeker.com" target="_blank">LazyJobSeeker.com</a>
@@ -779,31 +906,35 @@
             
             <!-- Controls Area -->
             <div class="controls">
-                <div class="control-buttons">
+                <div class="gear-corner">
+                    <i class="fas fa-gear gear-icon" id="openAIGear"></i>
+                </div>
+                <div class="control-buttons" style="display: flex; align-items: center;">
                     <button id="micButton" class="mic-button">
                         <i class="fas fa-microphone"></i>
                     </button>
-                    <button id="resetButton" class="reset-button">
-                        <i class="fas fa-refresh"></i>
-                    </button>
-                    <!-- Hide toggle moved here -->
-                    <div class="toggle-container">
-                        <div class="toggle-switch compact">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <button id="resetButton" class="reset-button">
+                            <i class="fas fa-refresh"></i>
+                        </button>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="modern-switch">
                             <input type="checkbox" id="screenSharingMode" class="toggle-input">
-                            <label for="screenSharingMode" class="toggle-label"></label>
-                            <span class="toggle-text">Hide</span>
+                            <span class="slider"><span class="knob"></span></span>
                         </div>
+                        <span class="hide-label">Hide</span>
                     </div>
                 </div>
                 <div id="statusText" class="status-text">
-                    Press microphone button or spacebar to start recording
+                    Use Spacebar for easy access.
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- New: Profile Input Modal -->
-    <div id="profileInputModal" class="modal hidden">
+    <!-- Profile Input Modal (shown immediately on app start) -->
+    <div id="profileInputModal" class="modal">
         <div class="modal-content">
             <h3>Provide Your Resume</h3>
             <p>Paste your resume text below. This will help Angel answer questions during interviews based on your profile.</p>
@@ -811,6 +942,19 @@
             <div class="button-group">
                 <button id="cancelProfileButton" class="reset-button">Cancel</button>
                 <button id="saveProfileButton" class="start-btn">Save Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OpenAI API Key Modal -->
+    <div id="apikeyModal" class="apikey-modal hidden">
+        <div class="apikey-modal-content">
+            <h3>Set OpenAI API Key</h3>
+            <label for="openaiKeyInput">Enter your OpenAI API key below. It will be used for your requests only and never shared.</label>
+            <input type="password" id="openaiKeyInput" placeholder="sk-..." autocomplete="off" />
+            <div class="button-group">
+                <button class="cancel" id="cancelApiKeyBtn">Cancel</button>
+                <button class="save" id="saveApiKeyBtn">Save</button>
             </div>
         </div>
     </div>
@@ -830,7 +974,6 @@
         });
         
         // Get all necessary DOM elements
-        const startAppButton = document.getElementById('startApp');
         const welcomeScreen = document.getElementById('welcomeScreen');
         const appContent = document.getElementById('appContent');
         const screenSharingToggle = document.getElementById('screenSharingMode');
@@ -841,19 +984,48 @@
         const liveTranscript = document.getElementById('liveTranscript');
         const transcriptText = document.getElementById('transcriptText');
         const liveIndicator = document.getElementById('liveIndicator');
-        const signInScreen = document.getElementById('signInScreen');
-        const upgradePrompt = document.getElementById('upgradePrompt');
-        const signInButton = document.getElementById('signInButton');
-        
-        // New: Profile Input Modal Elements
-        const provideProfileButton = document.getElementById('provideProfileButton');
+        // Remove signInScreen and signInButton logic
+        // Remove checkAuth and sign-in button event handler
+        // Remove all plan-checking and auth-complete/auth-error IPC handlers
+        // After resume is provided, enable the assistant/chat UI
+        let userProfileProvided = false;
         const profileInputModal = document.getElementById('profileInputModal');
         const resumeTextArea = document.getElementById('resumeTextArea');
         const saveProfileButton = document.getElementById('saveProfileButton');
         const cancelProfileButton = document.getElementById('cancelProfileButton');
-        
-        // New: Reference the new button on the welcome screen
         const provideProfileButtonWelcome = document.getElementById('provideProfileButtonWelcome');
+        const startAppButton = document.getElementById('startApp');
+        // On save profile, hide modal, show welcome screen, enable start button
+        saveProfileButton.addEventListener('click', () => {
+            const resumeText = resumeTextArea.value.trim();
+            if (resumeText) {
+                userProfileProvided = true;
+                profileInputModal.classList.add('hidden');
+                welcomeScreen.classList.remove('hidden');
+                startAppButton.classList.remove('hidden');
+                startAppButton.disabled = false;
+                provideProfileButtonWelcome.classList.add('hidden');
+                micButton.disabled = false;
+                micButton.style.opacity = '1';
+                micButton.style.cursor = 'pointer';
+            } else {
+                alert('Please paste your resume text.');
+            }
+        });
+        // On cancel, just keep modal open (or optionally close app)
+        cancelProfileButton.addEventListener('click', () => {
+            resumeTextArea.value = '';
+        });
+        // Provide Profile button on welcome screen reopens modal
+        provideProfileButtonWelcome.addEventListener('click', () => {
+            profileInputModal.classList.remove('hidden');
+            resumeTextArea.value = '';
+        });
+        // Start button shows app content
+        startAppButton.addEventListener('click', () => {
+            welcomeScreen.classList.add('hidden');
+            appContent.classList.remove('hidden');
+        });
         
         // Add console logs for debugging
         console.log('Initializing application...');
@@ -863,7 +1035,8 @@
         let mediaRecorder = null;
         let audioChunks = [];
         let messages = [];
-        let userProfileProvided = false; // New state to track if user profile is provided
+        // Remove userProfileProvided state
+        let statusHideTimer = null;
 
         // Make sure appContent is hidden initially
         appContent.classList.add('hidden');
@@ -904,16 +1077,11 @@
             messages.push({ text, isUser });
         }
         
-        // Function to update live transcript
+        // Function to update live transcript (now only for status, not live text)
         function updateLiveTranscript(text) {
             if (text && text.trim()) {
                 transcriptText.textContent = text;
                 liveTranscript.classList.add('active');
-                
-                // Make sure live indicator is visible when transcribing
-                if (isRecording) {
-                    liveIndicator.classList.remove('hidden');
-                }
             } else {
                 liveTranscript.classList.remove('active');
             }
@@ -921,7 +1089,14 @@
         
         // Update status text
         function updateStatus(text) {
-            statusText.textContent = text;
+            statusText.textContent = text.replace('Press microphone button or spacebar to start recording', 'Use Spacebar for easy access.').replace('Press microphone or spacebar to start recording', 'Use Spacebar for easy access.').replace('Conversation reset. ', 'Conversation reset.').replace('Welcome! Profile loaded. Press microphone button or spacebar to start recording.', 'Welcome! Profile loaded. Use Spacebar for easy access.');
+            statusText.style.opacity = '1';
+            statusText.style.visibility = 'visible';
+            if (statusHideTimer) clearTimeout(statusHideTimer);
+            statusHideTimer = setTimeout(() => {
+                statusText.style.opacity = '0';
+                statusText.style.visibility = 'hidden';
+            }, 10000);
         }
         
         // Start button click handler
@@ -963,18 +1138,14 @@
 
         // Toggle recording function
         async function toggleRecording() {
-            // New: Check if user profile is provided
             if (!userProfileProvided) {
                 updateStatus('Please provide your resume to start the assistant.');
                 return; 
             }
 
             try {
-                // If already processing a toggle, ignore this request
                 if (isProcessingToggle) return;
                 isProcessingToggle = true;
-                
-                // If mediaRecorder is null, initialize it
                 if (!mediaRecorder) {
                     const initialized = await initializeRecording();
                     if (!initialized) {
@@ -983,61 +1154,42 @@
                     }
                 }
 
-                // Check recording state and handle accordingly
                 if (!isRecording) {
-                    // Starting a new recording
                     audioChunks = [];
                     console.log('Starting recording');
-                    
-                    // Update UI
                     micButton.classList.add('recording');
                     micButton.innerHTML = '<i class="fas fa-microphone-slash"></i>';
                     updateStatus('Listening... Click microphone or press spacebar to stop');
-                    
-                    // Show and reset the live transcript
-                    updateLiveTranscript('Listening...');
+                    updateLiveTranscript('Listening...'); // Show Listening... while recording
                     liveIndicator.classList.remove('hidden');
-                    
-                    // Configure streaming data handler for real-time chunks
                     mediaRecorder.ondataavailable = (event) => {
                         if (event.data.size > 0) {
                             audioChunks.push(event.data);
-                            
-                            // Process the chunk immediately for streaming
-                            const reader = new FileReader();
-                            reader.onload = () => {
-                                const base64Audio = reader.result.split(',')[1];
-                                // Send this chunk to the main process for real-time processing
-                                ipcRenderer.send('stream-audio-chunk', base64Audio);
-                            };
-                            reader.readAsDataURL(event.data);
                         }
                     };
-                    
-                    // Start recording with smaller timeslice for more frequent updates
-                    mediaRecorder.start(100);
-                    
-                    // Signal to main process that we're starting to record
-                    ipcRenderer.send('toggle-recording', true);
-                    
+                    mediaRecorder.onstop = async () => {
+                        // Show Pro upsell message instead of 'Transcribing...'
+                        transcriptText.innerHTML = 'For more speed and live transcription, try the <a href="https://lazyjobseeker.com/pricing" target="_blank" style="color:#6366f1;font-weight:bold;text-decoration:underline;">Pro</a> version of Angel.';
+                        liveTranscript.classList.add('active');
+                        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                        const buffer = await blob.arrayBuffer();
+                        let binary = '';
+                        const bytes = new Uint8Array(buffer);
+                        for (let i = 0; i < bytes.byteLength; i++) {
+                            binary += String.fromCharCode(bytes[i]);
+                        }
+                        const base64Audio = btoa(binary);
+                        ipcRenderer.send('audio-data', base64Audio);
+                        audioChunks = [];
+                    };
+                    mediaRecorder.start();
                     isRecording = true;
                 } else {
-                    // Stopping recording
                     console.log('Stopping recording');
-                    
-                    // Update UI
                     micButton.classList.remove('recording');
                     micButton.innerHTML = '<i class="fas fa-microphone"></i>';
                     updateStatus('Processing...');
-                    
-                    // Hide live indicator
                     liveIndicator.classList.add('hidden');
-                    
-                    // Tell the main process to stop recording
-                    ipcRenderer.send('stop-audio-stream');
-                    ipcRenderer.send('toggle-recording', false);
-                    
-                    // Stop the MediaRecorder
                     try {
                         mediaRecorder.stop();
                         const tracks = mediaRecorder.stream.getTracks();
@@ -1045,27 +1197,18 @@
                     } catch (error) {
                         console.error('Error stopping MediaRecorder:', error);
                     }
-                    
-                    // Create new MediaRecorder instance for next recording
                     mediaRecorder = null;
-                    
                     isRecording = false;
                 }
-                
-                // Reset the processing flag with a slight delay to prevent double toggles
                 setTimeout(() => {
                     isProcessingToggle = false;
                 }, 300);
             } catch (error) {
                 console.error('Error toggling recording:', error);
                 addMessage(`Error: ${error.message}`, false);
-                
-                // Reset UI
                 micButton.classList.remove('recording');
                 micButton.innerHTML = '<i class="fas fa-microphone"></i>';
                 updateStatus('Error recording. Please try again.');
-                
-                // Reset state
                 isRecording = false;
                 isProcessingToggle = false;
                 mediaRecorder = null;
@@ -1086,7 +1229,7 @@
             messages = messages.slice(0, 1);
             
             // Reset status
-            updateStatus('Conversation reset. Press microphone or spacebar to start recording');
+            updateStatus('Conversation reset..');
             
             // Tell main process to reset transcript
             ipcRenderer.send('reset-transcript');
@@ -1133,37 +1276,56 @@
         });
         
         // New: Provide Profile button handlers (now for the new button)
-        provideProfileButtonWelcome.addEventListener('click', () => {
-            profileInputModal.classList.remove('hidden');
-            resumeTextArea.value = ''; // Clear previous text
-        });
-
-        cancelProfileButton.addEventListener('click', () => {
-            profileInputModal.classList.add('hidden');
-            resumeTextArea.value = '';
-        });
-
-        saveProfileButton.addEventListener('click', async () => {
+        // Remove provideProfileButton handlers
+        
+        // Remove saveProfileButton and cancelProfileButton handlers
+        
+        // Remove all sign-in/auth logic and related variables
+        // On app start, show the profile input modal
+        document.getElementById('profileInputModal').classList.remove('hidden');
+        // After resume is provided, enable the assistant/chat UI
+        // Only declare variables once
+        // let userProfileProvided = false; // Only declare once at the top
+        // (already declared above) const startAppButton = document.getElementById('startApp');
+        // On save profile, hide modal, show welcome screen, enable start button
+        saveProfileButton.addEventListener('click', () => {
             const resumeText = resumeTextArea.value.trim();
             if (resumeText) {
-                // Send resume text to main process
-                await ipcRenderer.invoke('save-user-profile', resumeText);
                 userProfileProvided = true;
                 profileInputModal.classList.add('hidden');
-                updateStatus('Profile saved! Use Spacebar to control Angel.');
-                // Re-check auth state to update UI if needed (e.g., enable start button)
-                checkAuth(); 
+                welcomeScreen.classList.remove('hidden');
+                startAppButton.classList.remove('hidden');
+                startAppButton.disabled = false;
+                provideProfileButtonWelcome.classList.add('hidden');
+                micButton.disabled = false;
+                micButton.style.opacity = '1';
+                micButton.style.cursor = 'pointer';
             } else {
                 alert('Please paste your resume text.');
             }
         });
+        // On cancel, just keep modal open (or optionally close app)
+        cancelProfileButton.addEventListener('click', () => {
+            resumeTextArea.value = '';
+        });
+        // Provide Profile button on welcome screen reopens modal
+        provideProfileButtonWelcome.addEventListener('click', () => {
+            profileInputModal.classList.remove('hidden');
+            resumeTextArea.value = '';
+        });
+        // Start button shows app content
+        startAppButton.addEventListener('click', () => {
+            welcomeScreen.classList.add('hidden');
+            appContent.classList.remove('hidden');
+        });
         
         // IPC event handlers
         
-        // Handle live transcript updates
+        // Handle live transcript updates (now only after transcription is done)
         ipcRenderer.on('transcript', (event, text) => {
-            if (text && text.trim() && text !== 'Recording...') {
-                updateLiveTranscript(text);
+            updateLiveTranscript(''); // Clear transcript area
+            if (text && text.trim()) {
+                addMessage(text, true); // Show transcript as user message
             }
         });
 
@@ -1186,26 +1348,14 @@
         
         // Handle answers
         ipcRenderer.on('answer', (event, text) => {
-            // Get transcript text
-            const transcript = transcriptText.textContent;
-            
-            // Only add transcript and answer if not empty
-            if (transcript && transcript !== 'Listening...' && transcript !== 'Waiting for speech...') {
-                // Add the transcript as a user message
-                addMessage(transcript, true);
-                
-                // Add the answer
-                if (text && text.trim()) {
-                    addMessage(text, false);
-                } else {
-                    addMessage('No answer received. Please try again.', false);
-                }
+            // Always show the answer as an AI message
+            if (text && text.trim()) {
+                addMessage(text, false);
             } else {
-                addMessage('No speech detected. Please try again.', false);
+                addMessage('No answer received. Please try again.', false);
             }
-            
             // Update status
-            updateStatus('Press microphone or spacebar to start recording');
+            updateStatus('Use Spacebar for easy access.');
         });
         
         // Handle answer status updates
@@ -1227,116 +1377,80 @@
             }
         });
 
-        // Check authentication status on load
-        async function checkAuth() {
-            try {
-                console.log('Checking authentication status...');
-                const result = await ipcRenderer.invoke('check-auth');
-                console.log('Auth check result:', result);
-                if (result.isAuthenticated) {
-                    if (result.hasAccess) {
-                        showWelcomeScreen();
-                    } else {
-                        showUpgradePrompt(result.planName);
-                    }
-                }
-            } catch (error) {
-                console.error('Auth check error:', error);
-            }
-        }
-        
-        // Handle sign-in button click
-        signInButton.addEventListener('click', async () => {
-            try {
-                console.log('Sign in button clicked');
-                signInButton.disabled = true;
-                signInButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
-
-                const result = await ipcRenderer.invoke('sign-in');
-                console.log('Sign-in result:', result);
-
-                if (result.success) {
-                    if (result.hasAccess) {
-                        showWelcomeScreen();
-                    } else {
-                        showUpgradePrompt(result.planName);
-                    }
-                } else {
-                    throw new Error('Authentication failed');
-                }
-            } catch (error) {
-                console.error('Sign in error:', error);
-                alert('Sign in failed: ' + error.message);
-            } finally {
-                signInButton.disabled = false;
-                signInButton.innerHTML = '<i class="fab fa-google"></i> Sign in with Google';
-            }
-        });
-        
-        // Show upgrade prompt
-        function showUpgradePrompt(currentPlan) {
-            console.log('Showing upgrade prompt for plan:', currentPlan);
-            signInScreen.classList.add('hidden');
-            welcomeScreen.classList.add('hidden');
-            appContent.classList.add('hidden');
-            upgradePrompt.classList.remove('hidden');
-            startAppButton.classList.add('hidden'); // Ensure start button is hidden
-        }
-        
-        // Show welcome screen
-        function showWelcomeScreen() {
-            console.log('Showing welcome screen');
-            signInScreen.classList.add('hidden');
-            upgradePrompt.classList.add('hidden');
-            appContent.classList.add('hidden');
-            welcomeScreen.classList.remove('hidden');
-            
-            // Only show start button if profile is provided
-            if (userProfileProvided) {
+        // Remove all sign-in/auth logic and related variables
+        // On app start, show the profile input modal
+        document.getElementById('profileInputModal').classList.remove('hidden');
+        // After resume is provided, enable the assistant/chat UI
+        // Only declare variables once
+        // let userProfileProvided = false; // Only declare once at the top
+        // (already declared above) const startAppButton = document.getElementById('startApp');
+        // On save profile, hide modal, show welcome screen, enable start button
+        saveProfileButton.addEventListener('click', () => {
+            const resumeText = resumeTextArea.value.trim();
+            if (resumeText) {
+                userProfileProvided = true;
+                profileInputModal.classList.add('hidden');
+                welcomeScreen.classList.remove('hidden');
                 startAppButton.classList.remove('hidden');
-                startAppButton.disabled = false; // Ensure it's enabled
-                provideProfileButtonWelcome.classList.add('hidden'); // Hide profile button
-                updateStatus('Welcome! Profile loaded. Press microphone button or spacebar to start recording.');
+                startAppButton.disabled = false;
+                provideProfileButtonWelcome.classList.add('hidden');
                 micButton.disabled = false;
                 micButton.style.opacity = '1';
                 micButton.style.cursor = 'pointer';
             } else {
-                startAppButton.classList.add('hidden');
-                startAppButton.disabled = true; // Ensure it's disabled
-                provideProfileButtonWelcome.classList.remove('hidden'); // Show profile button
-                updateStatus('Please provide your resume to start the assistant.');
-                micButton.disabled = true;
-                micButton.style.opacity = '0.5';
-                micButton.style.cursor = 'not-allowed';
+                alert('Please paste your resume text.');
             }
-        }
+        });
+        // On cancel, just keep modal open (or optionally close app)
+        cancelProfileButton.addEventListener('click', () => {
+            resumeTextArea.value = '';
+        });
+        // Provide Profile button on welcome screen reopens modal
+        provideProfileButtonWelcome.addEventListener('click', () => {
+            profileInputModal.classList.remove('hidden');
+            resumeTextArea.value = '';
+        });
+        // Start button shows app content
+        startAppButton.addEventListener('click', () => {
+            welcomeScreen.classList.add('hidden');
+            appContent.classList.remove('hidden');
+        });
         
-        // Initial check on app load
-        checkAuth();
+        // On page load, ensure status is visible
+        statusText.style.opacity = '1';
+        statusText.style.visibility = 'visible';
 
-        // Add these event listeners after the existing ones
-        ipcRenderer.on('auth-complete', (event, result) => {
-            console.log('Auth complete:', result);
-            if (result.hasAccess) {
-                showWelcomeScreen();
-            } else {
-                showUpgradePrompt(result.planName);
-            }
+        // OpenAI API Key logic
+        let userOpenAIKey = null;
+        const openAIGear = document.getElementById('openAIGear');
+        const apikeyModal = document.getElementById('apikeyModal');
+        const openaiKeyInput = document.getElementById('openaiKeyInput');
+        const saveApiKeyBtn = document.getElementById('saveApiKeyBtn');
+        const cancelApiKeyBtn = document.getElementById('cancelApiKeyBtn');
+
+        openAIGear.addEventListener('click', () => {
+            apikeyModal.classList.remove('hidden');
+            openaiKeyInput.value = userOpenAIKey || '';
+            openaiKeyInput.focus();
+        });
+        cancelApiKeyBtn.addEventListener('click', () => {
+            apikeyModal.classList.add('hidden');
+        });
+        saveApiKeyBtn.addEventListener('click', () => {
+            userOpenAIKey = openaiKeyInput.value.trim();
+            apikeyModal.classList.add('hidden');
+            // Send the key to the main process
+            ipcRenderer.send('set-openai-key', userOpenAIKey);
+        });
+        // Optional: close modal on outside click
+        apikeyModal.addEventListener('mousedown', (e) => {
+            if (e.target === apikeyModal) apikeyModal.classList.add('hidden');
         });
 
-        ipcRenderer.on('auth-error', (event, error) => {
-            console.error('Auth error:', error);
-            alert('Authentication failed: ' + error);
-            // Reset button state
-            signInButton.disabled = false;
-            signInButton.innerHTML = '<i class="fab fa-google"></i> Sign in with Google';
-        });
-
-        // New IPC handler for profile status from main process (e.g., if profile was loaded from persistence)
-        ipcRenderer.on('profile-status', (event, isProvided) => {
-            userProfileProvided = isProvided;
-            // Re-check auth status to update UI after profile status is known
-            checkAuth();
+        // Add IPC handler to reply with the latest visible transcript when requested
+        ipcRenderer.on('request-latest-transcript', () => {
+            const transcript = transcriptText.textContent || '';
+            ipcRenderer.send('latest-transcript', transcript, userOpenAIKey || null);
         });
     </script>
 </body>
