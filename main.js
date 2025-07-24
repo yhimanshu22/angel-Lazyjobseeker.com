@@ -1,25 +1,11 @@
 const { app, BrowserWindow, ipcMain, systemPreferences, shell } = require('electron')
 const path = require('path')
 const fs = require('fs')
-// Remove: const speech = require('@google-cloud/speech')
-// Remove all code that uses speechClient, createRecognizeStream, and Google transcription
-// When audio is received (in ipcMain.on('audio-data', ...) and stream-audio-chunk),
-//   send the audio buffer to OpenAI Whisper API using openai.audio.transcriptions.create
-//   Use the returned transcript as the transcript for the rest of the flow
-// Remove all Google credentials and error handling for Google APIs
+
 const record = require('node-record-lpcm16')
 const textToSpeech = require('@google-cloud/text-to-speech')
 const OpenAI = require('openai')
-// Remove all Google/Firebase/Firebase Auth imports and related variables
-// Remove all code related to Google credentials, Firebase, and user plan checks
-// Remove all code that loads/saves the resume from disk
-// Remove all code that checks for authentication or user plans
-// On app start, show a modal (via IPC) to request the resume from the user
-// Store the resume in memory for the session only
-// Only allow the assistant/chat UI to work after the resume is provided
-// Remove any references to the Google Cloud credentials JSON file
-// Remove all IPC handlers related to sign-in, check-auth, sign-out, and user profile persistence
-// Remove all code that references or uses firebase-config.js
+
 const http = require('http')
 const url = require('url')
 const tmp = require('tmp');
@@ -54,41 +40,6 @@ let isInScreenSharingMode = false;
 
 // Add this near the top with other platform-specific code
 const isWindows = process.platform === 'win32';
-
-// Function to get credentials path that works in both dev and production
-function getCredentialsPath() {
-  if (app.isPackaged) {
-    return path.join(process.resourcesPath, 'lazy-job-seeker-4b29b-21d42df9f315.json')
-  } else {
-    return path.join(__dirname, 'lazy-job-seeker-4b29b-21d42df9f315.json')
-  }
-}
-
-// Initialize Google clients with error handling
-let speechClient = null;
-let ttsClient = null;
-
-try {
-  const credentialsPath = getCredentialsPath();
-  console.log('Loading Google credentials from:', credentialsPath);
-  
-  // Check if credentials file exists
-  if (!fs.existsSync(credentialsPath)) {
-    console.error('Google credentials file not found at:', credentialsPath);
-  } else {
-    console.log('Google credentials file found, initializing clients...');
-    speechClient = new speech.SpeechClient({
-      keyFilename: credentialsPath
-    });
-    
-    ttsClient = new textToSpeech.TextToSpeechClient({
-      keyFilename: credentialsPath
-    });
-    console.log('Google clients initialized successfully');
-  }
-} catch (error) {
-  console.error('Error initializing Google clients:', error);
-}
 
 // Update the createWindow function
 function createWindow() {
