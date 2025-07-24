@@ -3,7 +3,6 @@ const path = require('path')
 const fs = require('fs')
 
 const record = require('node-record-lpcm16')
-const textToSpeech = require('@google-cloud/text-to-speech')
 const OpenAI = require('openai')
 
 const http = require('http')
