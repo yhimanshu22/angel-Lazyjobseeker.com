@@ -2,7 +2,6 @@ const { app, BrowserWindow, ipcMain, systemPreferences, shell } = require('elect
 const path = require('path')
 const fs = require('fs')
 
-const record = require('node-record-lpcm16')
 const OpenAI = require('openai')
 
 const http = require('http')

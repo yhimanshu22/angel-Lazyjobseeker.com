@@ -20,7 +20,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.8.4",
-    "openai": "^4.24.1"
+    "openai": "^4.24.1",
+    "tmp": "^0.2.1"
   },
   "devDependencies": {
     "@electron/notarize": "^3.0.1",
@@ -45,25 +46,21 @@
     "win": {
       "icon": "assets/icons/icon.ico",
       "target": [
-        "nsis",
-        "zip"
-      ]
+        {
+          "target": "nsis",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "requestedExecutionLevel": "asInvoker"
     },
     "files": [
-      "**/*",
-      "!lazy-job-seeker-4b29b-21d42df9f315.json"
+      "**/*"
     ],
-    "extraResources": [
-      {
-        "from": "lazy-job-seeker-4b29b-21d42df9f315.json",
-        "to": "lazy-job-seeker-4b29b-21d42df9f315.json"
-      }
-    ],
-    "asarUnpack": [
-      "node_modules/@google-cloud/text-to-speech/**/*",
-      "node_modules/@google-cloud/speech/**/*",
-      "node_modules/node-record-lpcm16/**/*"
-    ],
+    "asarUnpack": [],
     "afterSign": "scripts/notarize.js",
     "publish": null
   }
