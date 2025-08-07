@@ -174,6 +174,32 @@ ipcMain.on('set-openai-key', (event, key) => {
   console.log('Received new OpenAI API key from UI:', userOpenAIKey ? '[REDACTED]' : '[empty]');
 });
 
+// Add IPC handler for resume updates
+ipcMain.on('set-user-resume', (event, resume) => {
+  userResume = resume;
+  console.log('User resume updated');
+  
+  // Save the updated resume to the user profile file
+  try {
+    let profile = {};
+    
+    // Load existing profile if it exists
+    if (fs.existsSync(userProfilePath)) {
+      const data = fs.readFileSync(userProfilePath, 'utf8');
+      profile = JSON.parse(data);
+    }
+    
+    // Update resume in profile
+    profile.resume = resume;
+    
+    // Save updated profile
+    fs.writeFileSync(userProfilePath, JSON.stringify(profile, null, 2));
+    console.log('User resume saved to disk');
+  } catch (error) {
+    console.error('Failed to save user resume:', error);
+  }
+});
+
 ipcMain.on('audio-data', async (event, base64Audio) => {
   try {
     if (!userOpenAIKey) {

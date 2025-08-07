@@ -1275,18 +1275,6 @@
             ipcRenderer.send('toggle-screen-sharing-mode', isHideMode);
         });
         
-        // New: Provide Profile button handlers (now for the new button)
-        // Remove provideProfileButton handlers
-        
-        // Remove saveProfileButton and cancelProfileButton handlers
-        
-        // Remove all sign-in/auth logic and related variables
-        // On app start, show the profile input modal
-        document.getElementById('profileInputModal').classList.remove('hidden');
-        // After resume is provided, enable the assistant/chat UI
-        // Only declare variables once
-        // let userProfileProvided = false; // Only declare once at the top
-        // (already declared above) const startAppButton = document.getElementById('startApp');
         // On save profile, hide modal, show welcome screen, enable start button
         saveProfileButton.addEventListener('click', () => {
             const resumeText = resumeTextArea.value.trim();
@@ -1300,19 +1288,25 @@
                 micButton.disabled = false;
                 micButton.style.opacity = '1';
                 micButton.style.cursor = 'pointer';
+                
+                // Send resume to backend
+                ipcRenderer.send('set-user-resume', resumeText);
             } else {
                 alert('Please paste your resume text.');
             }
         });
+        
         // On cancel, just keep modal open (or optionally close app)
         cancelProfileButton.addEventListener('click', () => {
             resumeTextArea.value = '';
         });
+        
         // Provide Profile button on welcome screen reopens modal
         provideProfileButtonWelcome.addEventListener('click', () => {
             profileInputModal.classList.remove('hidden');
             resumeTextArea.value = '';
         });
+        
         // Start button shows app content
         startAppButton.addEventListener('click', () => {
             welcomeScreen.classList.add('hidden');
