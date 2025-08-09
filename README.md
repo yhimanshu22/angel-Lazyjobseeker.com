@@ -81,7 +81,7 @@ We never include an API key — you bringyour own from OpenAI or Gemini(free)
 
 📥 Download & Test it for free:
 
-https://lazyjobseeker.com/angel-llifetime
+https://lazyjobseeker.com/angel-lifetime
 
 ⸻
 
