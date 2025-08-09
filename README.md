@@ -60,10 +60,14 @@ If Angel runs slowly:
 	1.	Close other heavy apps
 	2.	Check your internet connection
 	3.	Restart Angel
+'''
 
-⸻
 
-## Option 2️⃣ Lifetime Access Version (Easy One-Click Install + More Features)
+
+
+
+
+### Option 2️⃣ Lifetime Access Version (Easy One-Click Install + More Features)
 
 Prefer a ready-to-use app with more features?
 The Lifetime Access Version is a one-time purchase — no coding required.
