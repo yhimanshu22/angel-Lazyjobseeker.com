@@ -69,6 +69,8 @@ If Angel runs slowly:
 
 ### Option 2️⃣ Lifetime Access Version (Easy One-Click Install + More Features)
 
+## The Lifetime version is built for people who want more options, more features, and a true one-click solution for their meetings or interviews — without touching the terminal or IDE. We’ve packed it to be as powerful and easy as possible, and you can own it forever for just $69. One payment. Lifetime peace of mind.
+
 Prefer a ready-to-use app with more features?
 The Lifetime Access Version is a one-time purchase — no coding required.
 
@@ -112,4 +114,7 @@ https://lazyjobseeker.com/lifetime
 
 ⸻
 
-🎥 Video Instructions are in youtube channel
+### 
+
+
+
