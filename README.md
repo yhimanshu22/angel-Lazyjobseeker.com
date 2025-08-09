@@ -60,8 +60,8 @@ If Angel runs slowly:
 	1.	Close other heavy apps
 	2.	Check your internet connection
 	3.	Restart Angel
-'''
 
+```bash
 
 
 
