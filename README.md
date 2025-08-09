@@ -4,7 +4,7 @@ Angel is a desktop application that helps you in meetings by providing real-time
 
 ## Features
 
-- **Transcription**: Get your speech transcribed after each recording (not live)
+- **Transcription**: Get your instant speech conversion 
 - **AI-Powered Answers**: Get concise and helpful responses using OpenAI's advanced models
 - **Always-on-Top**: Angel stays visible over other applications
 - **Screen Sharing Mode**: Hide Angel from screen recordings with a single click
@@ -20,7 +20,7 @@ After starting the app, click the gear icon in the lower left corner. Paste your
 
 ### 2. Basic Controls
 
-- **Start/Stop Recording**: Click the microphone button or press the spacebar
+- **Start/Stop Recording**: Click the microphone button or press the spacebar(suggested)
 - **Reset Conversation**: Click the refresh button to clear the chat history
 - **Hide from Screen Sharing**: Toggle the "Hide" switch to make Angel invisible in screen recordings
 
@@ -30,11 +30,7 @@ After starting the app, click the gear icon in the lower left corner. Paste your
 
 ### 4. Tips for Best Results
 
-1. **Speak Clearly**: For the best transcription quality, speak at a normal pace and volume
-2. **Use Short Phrases**: The AI works best with concise, focused questions or statements
-3. **Position Properly**: Keep Angel visible but out of the way during your meetings
-4. **Toggle Screen Sharing**: When sharing your screen, use the Hide toggle to prevent Angel from appearing in your presentation
-
+1. always test touroughly beforegoing for a real meeting or interview.
 ## ⚡️ Want Live, Fast Transcription?
 
 This open source version may be slower than the Pro version, as it uses your own OpenAI API key and does not support live transcription. For the fastest, live transcription and premium features, consider subscribing to the [Pro version](https://lazyjobseeker.com/pricing).
@@ -91,7 +87,9 @@ npm start
 
 Tip: First run will prompt you to add an API key in Settings (gear icon).
 
-# Downloads (Desktop Builds)
+optional--- for prople who dont want all this haasle and want one click solution
+
+more features and onestep installation process only for mac and windows but this is only for people who who what is Gemini api or OpenAI api:
 
 The app supports direct downloads via environment-provided links so you can update without changing the README.
 
@@ -162,20 +160,14 @@ Step-by-step setup and usage walkthroughs. We’ll keep adding more videos over 
 - "Best part: keyboard shortcuts, quick snippets, and quiet UI. It never distracts from the conversation." — Akira Sato, Systems Engineer (Tokyo)
 - "I followed the video guide, generated an API key, and pasted it into settings. Everything just worked. I use Angel for writing test scenarios and bug reproduction steps." — Isabella Rossi, QA Engineer (Milan)
 
-# Environment Variables
-
-Set these as needed for distribution and runtime configuration:
-
-- ANGEL_WIN_DOWNLOAD_URL
-- ANGEL_MAC_INTEL_URL
-- ANGEL_MAC_ARM_URL
-- OPENAI_API_KEY (if using OpenAI)
-- GEMINI_API_KEY (if using Gemini)
 
 # Notes on Privacy & Security
 
-- Audio is processed in real-time and not stored by default
+- Audio is processed in real-time and not stored by default full privacy everything in local including resume update
 - Conversations stay on your device; API usage follows provider policies
 - Keys are never hard‑coded; use the Settings screen or env vars
 
-For support or questions, visit: <https://lazyjobseeker.com>
+Intrested and you know what is API key then download now and use it for lifetime with very offordablenprice:
+
+Download now:
+For support or questions, visit: <https://lazyjobseeker.com/lifetime>
