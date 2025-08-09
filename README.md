@@ -25,7 +25,7 @@ You run it from your **terminal or IDE** with your **own API key**.
 - macOS 10.14+ (Intel or Apple Silicon) or Windows 10+ (64-bit)
 
 **Steps:**
-```bash
+
 git clone https://github.com/<your-org>/angel-opensource.git
 cd angel-opensource
 npm install
@@ -61,7 +61,6 @@ If Angel runs slowly:
 	2.	Check your internet connection
 	3.	Restart Angel
 
-```bash
 
 
 
