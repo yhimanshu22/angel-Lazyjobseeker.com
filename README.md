@@ -2,15 +2,15 @@
 # Angel AI Meeting Assistant
 
 Angel is a desktop application that helps you in meetings by providing **real-time transcription** and **AI-generated answers**.
-
+two ways to acces it: 
 ---
 
-## 1️⃣ Open Source Version (Current)
+##Option 1️⃣ Open Source Version (above repo)
 
 This is the **open-source edition** of Angel.  
-It currently supports **only the OpenAI API**.  
+It currently supports **OpenAI API**.  
 You run it from your **terminal or IDE** with your **own API key**.  
-**No API key is included by default** — you control your usage and costs.
+**No API key is included by default** —
 
 ### ✨ Features (Open Source)
 - **Transcription** – Instant speech-to-text conversion  
@@ -32,10 +32,7 @@ npm install
 npm start
 
 🔑 Bring Your Own API Key (OpenAI Only)
-	1.	In the app: Open Settings → Paste API key → Save
-	2.	Or via terminal before launch:
-
-export OPENAI_API_KEY="sk-..."
+	1.	In the app: Open Settings → Paste API key → Savee
 
 Get your key from: https://platform.openai.com/account/api-keys
 
@@ -56,19 +53,13 @@ If Angel can’t hear you:
 	2.	Ensure Angel has microphone permissions
 	3.	Restart the app
 
-If Angel runs slowly:
-	1.	Close other heavy apps
-	2.	Check your internet connection
-	3.	Restart Angel
+
+rhis is one way of using things, if youbfind this process is to much hectic and looking somthing easy and robust we got you:
 
 
+## Option 2️⃣ Lifetime Access Version (Easy One-Click Install + More Features)
 
-
-
-
-### Option 2️⃣ Lifetime Access Version (Easy One-Click Install + More Features)
-
-## The Lifetime version is built for people who want more options, more features, and a true one-click solution for their meetings or interviews — without touching the terminal or IDE. We’ve packed it to be as powerful and easy as possible, and you can own it forever for just $69. One payment. Lifetime peace of mind.
+### The Lifetime version is built for ppeoplewho want more options, more features, and a true one-click solution for their meetings or iinterviews— without touching the terminal or IDE. We’ve packed it to be as powerful and easy as possible, and yyoucan own it forever for just $69. OOnepayment. Lifetime peace of mind.
 
 Prefer a ready-to-use app with more features?
 The Lifetime Access Version is a one-time purchase — no coding required.
@@ -79,22 +70,18 @@ The Lifetime Access Version is a one-time purchase — no coding required.
 	•	Multiple chat modes (coding, brainstorming, Q&A)
 	•	Voice + Chat combined in one interface
 	•	Priority support
-	•	Future updates included
-
+	•	Future updates iincluded
 💰 Pricing
 	•	One-time payment: $69 (~₹5,175 via Razorpay/PhonePe)
 	•	Use forever — no monthly or yearly fees
 
 📜 Bring Your Own API Policy
 
-We never include an API key — you bring your own from OpenAI or Gemini, so:
-	•	You control your costs
-	•	Your data stays private
-	•	Keys are stored locally or via environment variables
+We never include an API key — you bringyour own from OpenAI or Gemini(free)
 
-📥 Download & Info
+📥 Download & Test it for free:
 
-https://lazyjobseeker.com/lifetime
+https://lazyjobseeker.com/angel-llifetime
 
 ⸻
 
@@ -106,14 +93,4 @@ https://lazyjobseeker.com/lifetime
 
 ⸻
 
-🗣 Testimonials
-	•	“I used Angel for three back-to-back interviews on Google Meet. The tool stayed invisible while giving me quick hints and code snippets. The lifetime plan paid for itself in a week.” — Aarav Sharma, SDE (Bengaluru)
-	•	“Structured coding answers are actually structured — not vague. I get complexity notes, edge cases, and test examples. That level of detail saved me in a system design round.” — Rohit Verma, Full-Stack Dev (Pune)
-	•	“Nothing is locked behind subscriptions. You buy once, bring an API key, and that’s it.” — Emily Johnson, Frontend Dev (Austin)
-
-⸻
-
-### 
-
-
-
+Visit website for mode details 
