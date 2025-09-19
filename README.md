@@ -1,7 +1,3 @@
-Here’s a **cleaner, more polished version** of your README. I’ve improved structure, readability, grammar, and flow while keeping your original intent intact:
-
----
-
 # 🚀 Angel AI Meeting Assistant
 
 Angel is a **desktop application** that makes your meetings smarter with **real-time transcription** and **AI-powered answers**.
