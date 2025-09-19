@@ -31,8 +31,8 @@ You run it directly from your **terminal or IDE** with your **own API key**.
 **Steps:**
 
 ```bash
-git clone https://github.com/<your-org>/angel-opensource.git
-cd angel-opensource
+git clone https://github.com/yhimanshu22/angel-Lazyjobseeker.com
+cd angel-Lazyjobseeker.com
 npm install
 npm start
 ```
